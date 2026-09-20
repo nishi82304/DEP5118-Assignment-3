@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Report noise · Teck Ghee Noise Map</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner">
+      <a class="brand" href="index.html"><span class="dot"></span>Teck Ghee Noise Map</a>
+      <nav>
+        <ul>
+          <li><a href="index.html">About</a></li>
+          <li><a href="participate.html">How to take part</a></li>
+          <li><a href="report.html" class="active">Report noise</a></li>
+          <li><a href="map.html">Map</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section style="padding-top:56px">
+      <p class="eyebrow">Send a reading</p>
+      <h1>Report noise</h1>
+      <p class="lede">Have your decibel reading, the block's postal code and a note of who is using the space ready. New to this? Read <a href="participate.html">how to take part</a> first.</p>
+
+      <div class="form-wrap">
+        <div class="form-frame" id="form-frame">
+          <div class="setup-note">
+            <h3>The form isn't connected yet</h3>
+            <p class="muted">Paste your Google Form link into <code>formUrl</code> in <code>js/config.js</code>. The form will appear here.</p>
+          </div>
+        </div>
+        <aside class="side">
+          <div class="card">
+            <h3>Before you start</h3>
+            <ul class="small" style="padding-left:18px;margin:6px 0 0">
+              <li>Average reading over 30 seconds (Avg or LAeq)</li>
+              <li>Postal code of the nearest block</li>
+              <li>What made the noise and when</li>
+              <li>Which age groups are using the space</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Your privacy</h3>
+            <p class="small muted">No names, emails or unit numbers are collected. Ages are recorded only in broad groups, and reports appear on the map at block level.</p>
+          </div>
+          <a class="btn" id="open-form" href="#" target="_blank" rel="noopener" style="text-align:center;display:none">Open the form in a new tab</a>
+          <a class="btn primary" href="map.html" style="text-align:center">See the map</a>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>Teck Ghee Noise Map · DEP5118 Individual Technology Assignment 3 · Nishi</footer>
+  <script src="js/config.js"></script>
+  <script>
+    (function () {
+      var url = (window.NOISE_CONFIG && window.NOISE_CONFIG.formUrl || "").trim();
+      if (!url) return;
+      var embed = url.split("?")[0].replace(/\/(edit|prefill)$/, "/viewform") + "?embedded=true";
+      document.getElementById("form-frame").innerHTML = '<iframe src="' + embed + '" title="Noise report form" loading="lazy">Loading…</iframe>';
+      var link = document.getElementById("open-form");
+      link.href = url; link.style.display = "block";
+    })();
+  </script>
+</body>
+</html>

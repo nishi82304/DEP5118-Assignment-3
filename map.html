@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Map · Teck Ghee Noise Map</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.css" rel="stylesheet">
+</head>
+<body class="map-page">
+  <header class="site-header">
+    <div class="inner">
+      <a class="brand" href="index.html"><span class="dot"></span>Teck Ghee Noise Map</a>
+      <nav>
+        <ul>
+          <li><a href="index.html">About</a></li>
+          <li><a href="participate.html">How to take part</a></li>
+          <li><a href="report.html">Report noise</a></li>
+          <li><a href="map.html" class="active">Map</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="map-layout">
+    <aside class="panel">
+      <p class="eyebrow">Live map</p>
+      <h1>What residents are hearing</h1>
+      <p class="small muted" style="margin:0">Noise readings from public spaces in the Teck Ghee site area, with the age groups using each space at the time. Click a dot for details.</p>
+      <p class="status" id="status">Loading reports…</p>
+
+      <h2>Summary</h2>
+      <div class="stats">
+        <div class="stat"><b id="s-count">–</b><span>reports</span></div>
+        <div class="stat"><b id="s-median">–</b><span>median dB</span></div>
+        <div class="stat"><b id="s-loud">–</b><span>at 65 dB or more</span></div>
+        <div class="stat"><b id="s-mixed">–</b><span>spaces shared by 2+ age groups</span></div>
+      </div>
+
+      <h2>View</h2>
+      <div class="toggle" role="group" aria-label="Map view">
+        <button id="v-points" aria-pressed="true">Readings</button>
+        <button id="v-heat" aria-pressed="false">Hotspots</button>
+      </div>
+
+      <h2>Who was there</h2>
+      <select id="age"><option value="">Everyone</option><option value="__mixed">Two or more age groups together</option></select>
+
+      <h2>Type of space</h2>
+      <select id="space"><option value="">All public spaces</option></select>
+
+      <h2>Time of day</h2>
+      <select id="time"><option value="">All times</option></select>
+
+      <h2>Source of noise</h2>
+      <div class="chips" id="chips"></div>
+
+      <h2>Noise level</h2>
+      <div id="legend"></div>
+
+      <h2>Average level when each age group is present</h2>
+      <div class="bars" id="bars-age"></div>
+
+      <h2>Average level by type of space</h2>
+      <div class="bars" id="bars-space"></div>
+
+      <h2>Average level by source</h2>
+      <div class="bars" id="bars"></div>
+
+      <p class="small muted" style="margin-top:24px">Phone meters are not calibrated, so compare places and times rather than reading exact values. <a href="participate.html">How readings are taken</a> · <a id="csv-link" href="data/sample.csv">Download the data (CSV)</a></p>
+    </aside>
+    <div id="map"></div>
+  </div>
+
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/map.js"></script>
+</body>
+</html>
